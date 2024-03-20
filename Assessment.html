@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assessment </title>
+</head>
+<style>
+    *{
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .container {
+
+        width: 40%;
+        border: 2px solid black;
+        margin: auto;
+        min-height: 90vh;
+    }
+
+    .item {
+        width: 60%;
+        border: 2px solid black;
+        margin-bottom: 40px;
+        width: 100%;
+        height: 4vh;
+    }
+
+    .Expences-form-heading {
+        width: 80%;
+    text-align: center;
+    margin: auto;
+    padding-top: 63px;
+    padding-bottom: 10px;
+    border-bottom: 4px solid black;
+    margin-bottom: 76px;
+    font-size: 20px;
+    }
+    .Expenses-form-desc{
+        margin: auto;
+        font-weight: 10px;
+        padding-bottom: 10px;
+        margin-bottom: 40px;
+    }
+    .Expenses-list{
+        /* margin: auto; */
+        font-weight: 10px;
+        padding-bottom: 10px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        border: 2px solid black;
+        display: block;
+        padding: 10px 40px;
+        margin: auto;
+    }
+
+   .Expenses-form {
+        width: 80%;
+        margin: auto;
+    }
+
+    #Expenses-list {
+        list-style: circle;
+        margin-left: 2vw;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <p class="Expences-form-heading">Expences List</p>
+        <form class="Expenses-form">
+            <p class="Expenses-form-desc">Create Expense</p>
+            <input type="text" id="item" class="item" name="item" placeholder="Expense Label">
+            <input type="text" id="amount" class="item" name="amount" placeholder="Expense Amount">
+            <button type="button" class="btn" id="btn">Add Expense</button>
+
+            <p class="Expenses-list">Expenses List</p>
+        </form>
+        <ul id="Expenses-list">
+
+        </ul>
+    </div>
+
+</body>
+<script>
+    let arr
+    let ul = document.getElementById("Expenses-list")
+    let renderer = () => {
+        if (arr == undefined) {
+            ul.innerHTML = `<h5>no items to display</h5>`
+        }
+        else {
+            arr.map((element) => {
+                ul.innerHTML += `<li>${element.item} : ${element.amount}</li>`
+
+            })
+        }
+    }
+
+    document.getElementById("btn").onclick = () => {
+        let item = document.getElementById("item").value
+        let value = document.getElementById("amount").value
+        arr = []
+        let obj = { item: item, amount: value }
+        arr.push(obj)
+        renderer()
+    }
+</script>
+
+</html>
