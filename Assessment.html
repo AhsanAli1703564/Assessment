@@ -87,26 +87,26 @@
 </body>
 <script>
     let arr
+    console.log(arr)
     let ul = document.getElementById("Expenses-list")
+   
     let renderer = () => {
-        if (arr == undefined) {
-            ul.innerHTML = `<h5>no items to display</h5>`
-        }
-        else {
+       
             arr.map((element) => {
                 ul.innerHTML += `<li>${element.item} : ${element.amount}</li>`
 
             })
-        }
     }
 
     document.getElementById("btn").onclick = () => {
+
         let item = document.getElementById("item").value
         let value = document.getElementById("amount").value
         arr = []
         let obj = { item: item, amount: value }
         arr.push(obj)
         renderer()
+
     }
 </script>
 
